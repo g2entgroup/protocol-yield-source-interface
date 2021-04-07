@@ -1,12 +1,16 @@
 {
-  "name": "aave-yield-source-spec",
-  "version": "1.0.0",
+  "name": "@pooltogether/yield-source-interface",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "hardhat": "^2.1.1"
+  "scripts": {
+    "compile": "hardhat compile",
+    "clean": "rm -rf artifacts cache abis",
+    "prepack": "yarn clean && hardhat compile",
+    "postpublish": "PACKAGE_VERSION=$(./scripts/package-version.sh) && git tag -ae v$PACKAGE_VERSION && git push --tags"
   },
-  "dependencies": {
-    "@pooltogether/pooltogether-contracts": "^3.3.2"
+  "devDependencies": {
+    "hardhat": "^2.1.1",
+    "hardhat-abi-exporter": "^2.0.8"
   }
 }
